@@ -12,7 +12,7 @@
         h1 {
           margin: 0.5em 0;
         }
-        
+
         .dialog .body {
           padding: 10%;
           background-color: #fff;
@@ -36,25 +36,52 @@
         }
 
     </style>
+
+    <link rel="stylesheet" href="{{ login }}/css/nav.css" />
+    <meta name="persona-email" content="{{ email }}">
   </head>
   <body>
 
     <div class="dialog">
 
+<!--
       <h1 class="header">
         <div class="buttons fr">
           <a class="button publish-enable-overlay" href="{{ audience }}/myprojects?app={{ appname }}&email={{ email }}" target="_blank">My Makes</a>
           <span class="button close-button" id="close" data-l10n="dialog-common:close">Close</span>
         </div>
+        <div>
+          <iframe src="{{ audience }}/sso/include.html" class="include-frame"></iframe>
+        </div>
         <img src="../img/goggles-wordmark.png" class="logo" alt="Mozilla X-Ray Goggles">
       </h1>
+-->
+      <div class="header" id="webmaker-nav">
+        <!-- the webmaker bar -->
+        <nav class="webmaker-nav-container">
+          <a id="logo" href="https://webmaker.org"><img src="{{ login }}/img/webmaker-logo.png" alt="Mozilla Webmaker" /></a>
+          <ul class="webmaker-nav user-info">
+            <li class="user">
+              Hi <span id="identity" class="user-name-container"></span>
+            </li>
+            <li class="makes"><button>My makes</button></li>
+            <li>
+              <iframe src="{{ audience }}/sso/include.html" class="include-frame"></iframe>
+            </li>
+          </ul>
+        </nav>
+        <div class="my-projects-container">
+          <iframe src="{{ audience }}/myprojects?app={{ appname }}&email={{ email }}"></iframe>
+        </div>
+      </div>
+
 
       <div class="subheader">
         <div class="pane">
           <h2 class="subtitle" data-l10n="header">Publish Your Remix</h2>
         </div>
       </div>
-      
+
       <div class="body">
 
         <div class="publish-disable-overlay" style="display: none;">
@@ -97,5 +124,8 @@
     <script src="yepnope.1.0.2-min.js"></script>
     <script src="src/localization.js"></script>
     <script src="publication.js"></script>
+
+    <script src="{{ audience }}/sso/include.js"></script>
+    <script src="http://login.mofostaging.net/js/sso-ux.js"></script>
   </body>
 </html>
